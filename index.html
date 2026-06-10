@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Tim Chen — Software Engineer at IEI Integration" />
+  <title>Tim Chen</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #0d1117;
+      --card:      #161b22;
+      --border:    #30363d;
+      --text:      #c9d1d9;
+      --subtext:   #8b949e;
+      --accent:    #58a6ff;
+      --btn-bg:    #21262d;
+      --btn-hover: #30363d;
+    }
+
+    body {
+      min-height: 100dvh;
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px 16px;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 400px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 40px 28px 32px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+    }
+
+    /* ── Avatar ── */
+    .avatar {
+      width: 88px;
+      height: 88px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #1f6feb 0%, #388bfd 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: 1px;
+      border: 3px solid var(--border);
+      flex-shrink: 0;
+    }
+
+    /* ── Profile text ── */
+    .profile {
+      margin-top: 16px;
+      text-align: center;
+    }
+    .profile h1 {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.2;
+    }
+    .profile p {
+      margin-top: 6px;
+      font-size: 14px;
+      color: var(--subtext);
+    }
+
+    /* ── Buttons ── */
+    .links {
+      margin-top: 28px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      padding: 14px 20px;
+      border-radius: 10px;
+      background: var(--btn-bg);
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-size: 15px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: background 0.15s, border-color 0.15s, transform 0.1s;
+      cursor: pointer;
+    }
+    .btn:hover {
+      background: var(--btn-hover);
+      border-color: var(--accent);
+      color: #fff;
+    }
+    .btn:active {
+      transform: scale(0.98);
+    }
+    .btn svg {
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+    }
+
+    .btn-linkedin { --icon-color: #0a66c2; }
+    .btn-github   { --icon-color: #c9d1d9; }
+    .btn-email    { --icon-color: #58a6ff; }
+    .btn-vcard    { --icon-color: #3fb950; }
+
+    .btn svg path,
+    .btn svg circle,
+    .btn svg rect {
+      fill: var(--icon-color, currentColor);
+    }
+
+    /* ── QR section ── */
+    .qr-section {
+      margin-top: 32px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+    .qr-label {
+      font-size: 12px;
+      color: var(--subtext);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    #qrcode {
+      border-radius: 8px;
+      overflow: hidden;
+      background: #fff;
+      padding: 6px;
+      line-height: 0;
+    }
+
+    /* ── Footer ── */
+    .footer {
+      margin-top: 24px;
+      font-size: 11px;
+      color: #484f58;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+
+    <div class="avatar">TC</div>
+
+    <div class="profile">
+      <h1>Tim Chen</h1>
+      <p>Software Engineer · IEI Integration</p>
+    </div>
+
+    <div class="links">
+
+      <!-- LinkedIn -->
+      <a class="btn btn-linkedin"
+         href="https://www.linkedin.com/in/tim-chen-a51829161/"
+         target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+        </svg>
+        LinkedIn
+      </a>
+
+      <!-- GitHub -->
+      <a class="btn btn-github"
+         href="https://github.com/InfernoPC"
+         target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755-1.335-1.755-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+        </svg>
+        GitHub
+      </a>
+
+      <!-- Email -->
+      <a class="btn btn-email"
+         href="mailto:timchen@ieiworld.com">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="#58a6ff" stroke-width="2" fill="none"/>
+          <polyline points="22,6 12,13 2,6" stroke="#58a6ff" stroke-width="2" fill="none"/>
+        </svg>
+        Email
+      </a>
+
+      <!-- vCard -->
+      <a class="btn btn-vcard"
+         href="tim.vcf" download="Tim_Chen.vcf">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="2" y="4" width="20" height="16" rx="2" stroke="#3fb950" stroke-width="2" fill="none"/>
+          <circle cx="9" cy="11" r="2.5" stroke="#3fb950" stroke-width="1.5" fill="none"/>
+          <path d="M5 18c0-2.21 1.79-4 4-4s4 1.79 4 4" stroke="#3fb950" stroke-width="1.5" fill="none"/>
+          <line x1="15" y1="9" x2="19" y2="9" stroke="#3fb950" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="15" y1="13" x2="19" y2="13" stroke="#3fb950" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        Download vCard
+      </a>
+
+    </div>
+
+    <div class="qr-section">
+      <span class="qr-label">Scan to open this page</span>
+      <div id="qrcode"></div>
+    </div>
+
+    <p class="footer">infernopc.github.io/about-me</p>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+  <script>
+    new QRCode(document.getElementById("qrcode"), {
+      text: "https://infernopc.github.io/about-me",
+      width: 128,
+      height: 128,
+      colorDark: "#000000",
+      colorLight: "#ffffff",
+      correctLevel: QRCode.CorrectLevel.M
+    });
+  </script>
+</body>
+</html>
