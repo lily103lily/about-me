@@ -1,7 +1,7 @@
 const CONFIG = {
   name:        "Tim Chen",
   initials:    "TC",
-  title:       "Software Engineer",
+  title:       "Project Manager",
   org:         "IEI Integration",
   email:       "timchen@ieiworld.com",
   linkedinUrl: "https://www.linkedin.com/in/tim-chen-a51829161/",
