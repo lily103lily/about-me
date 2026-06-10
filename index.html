@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Tim Chen — Software Engineer at IEI Integration" />
-  <title>Tim Chen</title>
+  <meta name="description" content="" />
+  <title></title>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -161,19 +161,18 @@
 <body>
   <div class="card">
 
-    <div class="avatar">TC</div>
+    <div class="avatar" id="avatar"></div>
 
     <div class="profile">
-      <h1>Tim Chen</h1>
-      <p>Software Engineer · IEI Integration</p>
+      <h1 id="name"></h1>
+      <p id="subtitle"></p>
     </div>
 
     <div class="links">
 
       <!-- LinkedIn -->
-      <a class="btn btn-linkedin"
-         href="https://www.linkedin.com/in/tim-chen-a51829161/"
-         target="_blank" rel="noopener noreferrer">
+      <a class="btn btn-linkedin" id="btn-linkedin"
+         href="#" target="_blank" rel="noopener noreferrer">
         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
           <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
         </svg>
@@ -181,9 +180,8 @@
       </a>
 
       <!-- GitHub -->
-      <a class="btn btn-github"
-         href="https://github.com/InfernoPC"
-         target="_blank" rel="noopener noreferrer">
+      <a class="btn btn-github" id="btn-github"
+         href="#" target="_blank" rel="noopener noreferrer">
         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
           <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755-1.335-1.755-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
         </svg>
@@ -191,8 +189,8 @@
       </a>
 
       <!-- Email -->
-      <a class="btn btn-email"
-         href="mailto:timchen@ieiworld.com">
+      <a class="btn btn-email" id="btn-email"
+         href="#">
         <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="#58a6ff" stroke-width="2" fill="none"/>
           <polyline points="22,6 12,13 2,6" stroke="#58a6ff" stroke-width="2" fill="none"/>
@@ -201,8 +199,8 @@
       </a>
 
       <!-- vCard -->
-      <a class="btn btn-vcard"
-         href="tim.vcf" download="Tim_Chen.vcf">
+      <a class="btn btn-vcard" id="btn-vcard"
+         href="#" download>
         <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <rect x="2" y="4" width="20" height="16" rx="2" stroke="#3fb950" stroke-width="2" fill="none"/>
           <circle cx="9" cy="11" r="2.5" stroke="#3fb950" stroke-width="1.5" fill="none"/>
@@ -220,14 +218,33 @@
       <div id="qrcode"></div>
     </div>
 
-    <p class="footer">infernopc.github.io/about-me</p>
+    <p class="footer" id="footer"></p>
 
   </div>
 
+  <script src="config.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
   <script>
+    document.title = CONFIG.name;
+    document.querySelector('meta[name="description"]').content =
+      CONFIG.name + " — " + CONFIG.title + " at " + CONFIG.org;
+
+    document.getElementById("avatar").textContent   = CONFIG.initials;
+    document.getElementById("name").textContent     = CONFIG.name;
+    document.getElementById("subtitle").textContent = CONFIG.title + " · " + CONFIG.org;
+
+    document.getElementById("btn-linkedin").href    = CONFIG.linkedinUrl;
+    document.getElementById("btn-github").href      = CONFIG.githubUrl;
+    document.getElementById("btn-email").href       = "mailto:" + CONFIG.email;
+
+    var vcardBtn = document.getElementById("btn-vcard");
+    vcardBtn.href     = CONFIG.vcfFile;
+    vcardBtn.download = CONFIG.vcfDownload;
+
+    document.getElementById("footer").textContent  = CONFIG.pageUrl.replace("https://", "");
+
     new QRCode(document.getElementById("qrcode"), {
-      text: "https://infernopc.github.io/about-me",
+      text: CONFIG.pageUrl,
       width: 128,
       height: 128,
       colorDark: "#000000",
