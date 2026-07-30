@@ -9,14 +9,15 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg:        #0d1117;
-      --card:      #161b22;
-      --border:    #30363d;
-      --text:      #c9d1d9;
-      --subtext:   #8b949e;
-      --accent:    #58a6ff;
-      --btn-bg:    #21262d;
-      --btn-hover: #30363d;
+      --bg:        #e2e9ec;
+      --card:      #ffffff;
+      --border:    #a3cce9;
+      --btn-border:#dbe1e4;
+      --text:      #1a1a1a;
+      --subtext:   #5b6b73;
+      --accent:    #1982c4;
+      --btn-bg:    #e2e9ec;
+      --btn-hover: #1982c4;
     }
 
     body {
@@ -34,8 +35,9 @@
       width: 100%;
       max-width: 400px;
       background: var(--card);
-      border: 1px solid var(--border);
+      border: 2px solid var(--border);
       border-radius: 16px;
+      box-shadow: 10px 12px 28px rgba(60, 80, 95, 0.18);
       padding: 40px 28px 32px;
       display: flex;
       flex-direction: column;
@@ -48,7 +50,7 @@
       width: 88px;
       height: 88px;
       border-radius: 50%;
-      background: linear-gradient(135deg, #1f6feb 0%, #388bfd 100%);
+      background: linear-gradient(135deg, #1982c4 0%, #4aa6dd 100%);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -76,14 +78,23 @@
       font-size: 14px;
       color: var(--subtext);
     }
+    .profile .email {
+      display: inline-block;
+      margin-top: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .profile .email:hover { text-decoration: underline; }
 
     /* ── Buttons ── */
     .links {
-      margin-top: 28px;
+      margin-top: 24px;
       width: 100%;
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 9px;
     }
 
     .btn {
@@ -92,24 +103,27 @@
       justify-content: center;
       gap: 10px;
       width: 100%;
-      padding: 14px 20px;
+      padding: 10px 20px;
       border-radius: 10px;
       background: var(--btn-bg);
-      border: 1px solid var(--border);
+      border: 1px solid var(--btn-border);
       color: var(--text);
       font-size: 15px;
       font-weight: 500;
       text-decoration: none;
-      transition: background 0.15s, border-color 0.15s, transform 0.1s;
+      transition: background 0.18s, border-color 0.18s, color 0.18s, transform 0.18s ease, box-shadow 0.18s ease;
       cursor: pointer;
     }
     .btn:hover {
       background: var(--btn-hover);
       border-color: var(--accent);
       color: #fff;
+      --icon-color: #fff;
+      transform: translateY(-3px) scale(1.03);
+      box-shadow: 0 8px 18px rgba(25, 130, 196, 0.35);
     }
     .btn:active {
-      transform: scale(0.98);
+      transform: translateY(-1px) scale(0.99);
     }
     .btn svg {
       width: 18px;
@@ -117,15 +131,16 @@
       flex-shrink: 0;
     }
 
-    .btn-linkedin { --icon-color: #0a66c2; }
-    .btn-github   { --icon-color: #c9d1d9; }
-    .btn-email    { --icon-color: #58a6ff; }
-    .btn-vcard    { --icon-color: #3fb950; }
+    .btn-linkedin,
+    .btn-github,
+    .btn-instagram,
+    .btn-blog,
+    .btn-line,
+    .btn-redbubble,
+    .btn-vcard { --icon-color: #1982c4; }
 
-    .btn svg path,
-    .btn svg circle,
-    .btn svg rect {
-      fill: var(--icon-color, currentColor);
+    .btn svg {
+      color: var(--icon-color, currentColor);
     }
 
     /* ── QR section ── */
@@ -154,7 +169,7 @@
     .footer {
       margin-top: 24px;
       font-size: 11px;
-      color: #484f58;
+      color: #9aa7ad;
     }
   </style>
 </head>
@@ -166,6 +181,7 @@
     <div class="profile">
       <h1 id="name"></h1>
       <p id="subtitle"></p>
+      <a id="email-text" class="email" href="#"></a>
     </div>
 
     <div class="links">
@@ -173,7 +189,7 @@
       <!-- LinkedIn -->
       <a class="btn btn-linkedin" id="btn-linkedin"
          href="#" target="_blank" rel="noopener noreferrer">
-        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
           <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
         </svg>
         LinkedIn
@@ -182,31 +198,61 @@
       <!-- GitHub -->
       <a class="btn btn-github" id="btn-github"
          href="#" target="_blank" rel="noopener noreferrer">
-        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
           <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755-1.335-1.755-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
         </svg>
         GitHub
       </a>
 
-      <!-- Email -->
-      <a class="btn btn-email" id="btn-email"
-         href="#">
-        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="#58a6ff" stroke-width="2" fill="none"/>
-          <polyline points="22,6 12,13 2,6" stroke="#58a6ff" stroke-width="2" fill="none"/>
+      <!-- Instagram -->
+      <a class="btn btn-instagram" id="btn-instagram"
+         href="#" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
         </svg>
-        Email
+        Instagram
+      </a>
+
+      <!-- Blog -->
+      <a class="btn btn-blog" id="btn-blog"
+         href="#" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M4 3h16c1.1 0 2 .9 2 2v14c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V5c0-1.1.9-2 2-2z" stroke="currentColor" stroke-width="2" fill="none"/>
+          <line x1="6" y1="8"  x2="18" y2="8"  stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <line x1="6" y1="12" x2="18" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <line x1="6" y1="16" x2="13" y2="16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        Blog
+      </a>
+
+      <!-- LINE Stickers -->
+      <a class="btn btn-line" id="btn-line"
+         href="#" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2C6.48 2 2 5.66 2 10.17c0 4.03 3.55 7.41 8.35 8.05.32.07.77.21.88.49.1.25.06.63.03.88l-.14.85c-.04.25-.2.98.86.53 1.06-.45 5.72-3.37 7.8-5.77 1.44-1.58 2.13-3.18 2.13-4.96C21.91 5.66 17.43 2 12 2z"/>
+        </svg>
+        LINE Stickers
+      </a>
+
+      <!-- Redbubble -->
+      <a class="btn btn-redbubble" id="btn-redbubble"
+         href="#" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <path d="M8 3 L9.5 3 Q12 6 14.5 3 L16 3 L21 7 L18 10.5 L17 9.5 L17 21 L7 21 L7 9.5 L6 10.5 L3 7 Z"
+                stroke-linejoin="round" fill="currentColor"/>
+        </svg>
+        Redbubble
       </a>
 
       <!-- vCard -->
       <a class="btn btn-vcard" id="btn-vcard"
          href="#" download>
         <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect x="2" y="4" width="20" height="16" rx="2" stroke="#3fb950" stroke-width="2" fill="none"/>
-          <circle cx="9" cy="11" r="2.5" stroke="#3fb950" stroke-width="1.5" fill="none"/>
-          <path d="M5 18c0-2.21 1.79-4 4-4s4 1.79 4 4" stroke="#3fb950" stroke-width="1.5" fill="none"/>
-          <line x1="15" y1="9" x2="19" y2="9" stroke="#3fb950" stroke-width="1.5" stroke-linecap="round"/>
-          <line x1="15" y1="13" x2="19" y2="13" stroke="#3fb950" stroke-width="1.5" stroke-linecap="round"/>
+          <rect x="2" y="4" width="20" height="16" rx="2" stroke="currentColor" stroke-width="2" fill="none"/>
+          <circle cx="9" cy="11" r="2.5" stroke="currentColor" stroke-width="1.5" fill="none"/>
+          <path d="M5 18c0-2.21 1.79-4 4-4s4 1.79 4 4" stroke="currentColor" stroke-width="1.5" fill="none"/>
+          <line x1="15" y1="9" x2="19" y2="9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="15" y1="13" x2="19" y2="13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
         </svg>
         Add to Contacts
       </a>
@@ -235,7 +281,14 @@
 
     document.getElementById("btn-linkedin").href    = CONFIG.linkedinUrl;
     document.getElementById("btn-github").href      = CONFIG.githubUrl;
-    document.getElementById("btn-email").href       = "mailto:" + CONFIG.email;
+    document.getElementById("btn-instagram").href   = CONFIG.instagramUrl;
+    document.getElementById("btn-blog").href        = CONFIG.blogUrl;
+    document.getElementById("btn-line").href        = CONFIG.lineStickerUrl;
+    document.getElementById("btn-redbubble").href   = CONFIG.redbubbleUrl;
+
+    var emailText = document.getElementById("email-text");
+    emailText.textContent = CONFIG.email;
+    emailText.href        = "mailto:" + CONFIG.email;
 
     var vcardBtn = document.getElementById("btn-vcard");
     vcardBtn.href     = CONFIG.vcfFile;
