@@ -1,7 +1,7 @@
 const CONFIG = {
   name:        "Lily Feng",
   initials:    "LF",
-  avatarImg:   "Lily.jpg",  // 頭貼檔名;留空則顯示上面的縮寫 LF
+  avatarImg:   "avatar.jpg",  // 頭貼檔名;留空則顯示上面的縮寫 LF
   title:       "Oracle ERP Engineer",
   org:         "IEI Integration Corp.",
   email:       "lily103lily@gmail.com",
